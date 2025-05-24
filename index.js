@@ -18,28 +18,6 @@ function getComputerChoice()
     return 0; 
 }
 
-function getHumanChoice()
-{
-    let humanInput = prompt('Enter: \'rock\', \'paper\', or  \'scissor\'');
-    humanInput = humanInput.charAt(0);
-    if(humanInput == 'R' || humanInput == 'r')
-    {
-        return humanInput.toUpperCase();
-    }
-    else if(humanInput == 'S' || humanInput == 's')
-    {
-        return humanInput.toUpperCase();
-    }
-    else if(humanInput == 'P' || humanInput == 'p')
-    {
-        return humanInput.toUpperCase();
-    }
-    else
-    {
-        alert('Wrong input');
-    }
-    return humanInput;
-}
 
 let humanScore = 0;
 let computerScore = 0; 
@@ -49,57 +27,82 @@ function playRound(humanChoice, computerChoice)
 {
     if(humanChoice == computerChoice)
     {
-        alert('Tie!');
+        showResult.textContent = "Tie!"
     }
     else if(humanChoice == 'R' && computerChoice == 'S')
     {
-        alert('You Win! Rock Beats Scissors');
+        showResult.textContent = "You Win! Rock Beats Scissors!"
         ++humanScore;
     }
     else if(humanChoice == 'R' && computerChoice == 'P')
     {
-        alert('You Lose! Rock losses to Paper');
+        showResult.textContent = 'You Lose! Rock losses to Paper';
         ++computerScore;
     }    
     else if(humanChoice == 'S' && computerChoice == 'R')
     {
-        alert('You Lose! Scissors losses to Rock');
+        showResult.textContent ='You Lose! Scissors losses to Rock';
         ++computerScore;
     }
     else if(humanChoice == 'S' && computerChoice == 'P')
     {
-            alert('You Win! Scissors Beats Paper');
-            ++humanScore;
+        showResult.textContent ='You Win! Scissors Beats Paper';
+        ++humanScore;
     }
     else if(humanChoice == 'P' && computerChoice == 'R')
     {
-        alert('You Win! Paper Beats Rock');
+        showResult.textContent ='You Win! Paper Beats Rock';
         ++humanScore;
     }
     else if(humanChoice == 'P' && computerChoice == 'S')
     {
-        alert('You Lose! Paper losses to Scissors');
+        showResult.textContent ='You Lose! Paper losses to Scissors';
         ++computerScore;
     }
 }
 
 
-function playGame()
+const rock = document.createElement("button");
+rock.textContent = "Rock";
+const paper = document.createElement("button");
+paper.textContent = "Paper";
+const scissor = document.createElement("button");
+scissor.textContent = "scissor";
+
+document.body.appendChild(rock);
+document.body.appendChild(paper);
+document.body.appendChild(scissor);
+
+const showResult = document.createElement("div");
+document.body.appendChild(showResult);
+
+const displayHumanScore = document.createElement("div");
+document.body.appendChild(displayHumanScore);
+
+const displayComputerScore = document.createElement("div");
+document.body.appendChild(displayComputerScore);
+displayComputerScore.textContent = "Computer Score: " + computerScore;
+displayHumanScore.textContent = "Your Score: " + humanScore;
+
+
+
+rock.addEventListener("click", (e) =>
 {
-    while(humanScore < 5 && computerScore < 5)
-    {
-        playRound(getHumanChoice(), getComputerChoice());
-        alert('Your Score: ' + humanScore + '\nComputer Score: ' + computerScore);
-    }
+    playRound('R',getComputerChoice());
+    displayComputerScore.textContent = "Computer Score: " + computerScore;
+    displayHumanScore.textContent = "Your Score: " + humanScore;
+})
 
-    if(humanScore > computerScore)
-    {
-        alert('You Won Against The Computer!');
-    }
-    else
-    {
-        alert('You Lost Against The Computer!');
-    }
-}
+paper.addEventListener("click", (e) =>
+{
+    playRound('P',getComputerChoice());
+    displayComputerScore.textContent = "Computer Score: " + computerScore;
+    displayHumanScore.textContent = "Your Score: " + humanScore;
+})
 
-playGame();
+scissor.addEventListener("click", (e) =>
+{
+    playRound('S',getComputerChoice());
+    displayComputerScore.textContent = "Computer Score: " + computerScore;
+    displayHumanScore.textContent = "Your Score: " + humanScore;
+})
