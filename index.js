@@ -106,3 +106,5 @@ scissor.addEventListener("click", (e) =>
     displayComputerScore.textContent = "Computer Score: " + computerScore;
     displayHumanScore.textContent = "Your Score: " + humanScore;
 })
+
+showResult.id = "showResult";

@@ -1,0 +1,58 @@
+/* styling.css */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f7fa;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    min-height: 100vh;
+    margin: 0;
+  }
+  
+  .btn-container {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  
+  button {
+    background-color: #e0e0e0;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.25s ease, color 0.25s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 10px;
+  }
+  
+  button:hover {
+    background-color: #c7d0d8;
+  }
+  
+  button:active {
+    background-color: #a9b3bc;
+  }
+  
+  #showResult {
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    min-height: 1.5em; /* keeps space even when empty */
+  }
+  
+  #displayHumanScore,
+  #displayComputerScore {
+    font-size: 1rem;
+    margin: 4px 0;
+  }
+  
+  /* Center scores under the buttons */
+  #scoreBoard {
+    text-align: center;
+  }
+  
